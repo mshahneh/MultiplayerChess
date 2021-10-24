@@ -1,0 +1,22 @@
+{
+  "name": "chess_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "colyseus": "^0.14.23",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@colyseus/loadtest": "^0.13.1",
+    "chai": "^4.2.0",
+    "eslint": "^7.2.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
