@@ -4,6 +4,10 @@ const cors = require('cors');
 const colyseus = require('colyseus');
 const monitor = require('@colyseus/monitor').monitor;
 const matchMaker = require("colyseus").matchMaker;
+const Server = require("@colyseus/core").Server;
+const WebSocketTransport = require("@colyseus/ws-transport").WebSocketTransport;
+// import { Server } from "@colyseus/core";
+// import { WebSocketTransport } from "@colyseus/ws-transport"
 // const socialRoutes = require("@colyseus/social/express").default;
 
 const ChessRoom = require('./src/rooms/chess_room').ChessRoom;
@@ -15,9 +19,13 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname+'/build'));
 
-const server = http.createServer(app);
-const gameServer = new colyseus.Server({
-  server: server,
+
+const server = http.createServer(app); // create the http server manually
+
+const gameServer = new Server({
+  transport: new WebSocketTransport({
+      server // provide the custom server for `WebSocketTransport`
+  })
 });
 
 // register your room handlers
